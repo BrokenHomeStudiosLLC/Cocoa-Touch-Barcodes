@@ -247,7 +247,9 @@ unsigned int japanpost_barDescriptor(unsigned int descriptor,unsigned int bar,un
 			NSString *tempCStr = [NSString stringWithString:tempContents];
 
 			[tempStr deleteCharactersInRange:NSMakeRange(maxLength,tempL - maxLength)];
-			tempL = [tempStr length];
+			
+            //ANALYZER WARNING
+            //tempL = [tempStr length];
 			validCount = 0;
 			for (i = 0; i < [tempStr length]; i++) {
 				uChar = [tempStr characterAtIndex:i];

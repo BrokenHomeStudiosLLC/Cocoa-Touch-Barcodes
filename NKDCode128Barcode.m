@@ -129,18 +129,17 @@
 -(NSString *)_encodeChar:(char)inChar
 // -----------------------------------------------------------------------------------
 {
-    int 	useSet = codeSet;	// Specifies the code on a per-character basis;
     NSString 	*prefix;
+    int useSet = 0;//ANALYZER WARNING
     
     // *** We currently only switch from A to B and vice versa
-    if (![self _canEncodeChar:inChar withSet:codeSet])
-    {
+    if (![self _canEncodeChar:inChar withSet:codeSet]) {
         useSet = (codeSet == SET_A) ? SET_B : SET_A;
         prefix = [self _shiftCharacterForSet:useSet];
-    }
-    else
+    } else {
         prefix = @"";
-
+    }
+    
     return [NSString stringWithFormat:@"%@%@",prefix, [self _encodeChar:inChar withSet:codeSet]];
 }
 // -----------------------------------------------------------------------------------
